@@ -1,0 +1,131 @@
+.tab-buttons {
+    width: 100%;
+    height: 8%; 
+}
+
+.tab {
+    width: 33.3%;
+    height: 100%;
+    border: none;
+    color: black;
+    border-radius: 10px 10px 0 0;
+    
+}
+
+.tabs {
+    width: 100%;
+    height: 100%;
+    border: none;
+    color: black;
+    border-radius: 10px 10px 0 0;
+}
+.active-tab {
+    background-color: white;
+    box-shadow: 0px -5px 7px gray;
+}
+
+.inactive-tab {
+    background-color: gray;
+}
+
+.tab-content {
+    height: 82%;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px gray;
+    overflow: auto;
+} .tab-content::-webkit-scrollbar{
+    width: 5px;
+} .tab-content::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: gray;
+    border-radius: 4px;
+} .tab-content::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+button {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    transition-duration: 0.3s;
+    cursor:pointer
+}
+
+button:active {
+    background-color: gray;
+}
+
+.button-line{
+    height: 8%;
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nextday-button{
+    background-color: white;
+    box-shadow: 2px 3px 5px gray;
+}
+
+.char-box {
+    margin: 10px;
+    background-color: white;
+    box-shadow: 2px 3px 5px gray;
+    padding: 5px;
+    border-radius: 10px;
+    width: 47%;
+}
+
+.gray {
+    background-color: #777777;
+    color: #444444;
+}
+
+.text-box {
+    width: 100%;
+    margin: 5px;
+    padding: 10px 10px 10px 10px;
+    background-color: #dcdcdc;
+    border-radius: 10px;
+}
+
+.round-photo {
+    border-radius: 75px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+.dead {
+    filter: grayscale(100%);
+    opacity: 0.3;
+}
+
+.small {
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.blue {
+    background-color: royalblue;
+}
+
+.red {
+    background-color: tomato;
+}
+
+.green {
+    background-color:green;
+}
+
+.lightgreen {
+    background-color: lightgreen;
+    color: white;
+}

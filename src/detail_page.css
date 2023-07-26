@@ -1,0 +1,180 @@
+
+  
+  
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.map-contain {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+}
+.box {
+    width: 8%;
+    position: relative;
+    cursor : pointer;
+}
+
+.window {
+    position: absolute;
+    border: 2px solid #000;
+    width: 78%;
+    height: 70%;
+    left: 52%;
+    top: 48%;
+    border-radius: 5%;
+    transform: translate( -50%, -50% );
+    overflow: hidden; 
+    
+}
+
+.tab {
+    border-bottom: 2px solid black; 
+    width: 100%;
+    height: 10%;
+    left: 0;
+    bottom : 0;
+    z-index: 998;
+    
+}
+.rest {
+    position: absolute;
+    border-top: 2px solid black; 
+    width: 100%;
+    height: 20%;
+    left: 0;
+    bottom : 0;
+}
+.rest1 {
+    width: 8%;
+    position: absolute;
+    cursor : pointer;
+    left: 40%;
+    top: 10%;
+}
+.rest2 {
+    width: 8%;
+    position: absolute;
+    cursor : pointer;
+    left: 55%;
+    top: 10%;
+}
+.rest3 {
+    width: 8%;
+    position: absolute;
+    cursor : pointer;
+    left: 70%;
+    top: 10%;
+}
+.rest4 {
+    width: 8%;
+    position: relative;
+    cursor : pointer;
+    left: 85%;
+    top: 10%;
+}
+
+
+
+.explore {
+    position: absolute;
+    border-right: 2px solid black; 
+    width: 30%;
+    height: 70%;
+    left: 0;
+    bottom : 20%;
+}
+.explore-position {
+    position: absolute;
+    width: 28%;
+    left: 50%;
+    bottom : 0%;
+    transform: translate( -50%, -10%);
+    cursor : pointer;
+}
+.map-position{
+    width: 100%;
+    height: 20%;
+    background-color: blanchedalmond;
+    left: 50%;
+    top: 10%;
+}
+
+.image-container {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-50%);
+    animation: slideIn 1s ease-out;
+    justify-content: center;
+
+  }
+  .image-content {
+    position: absolute;
+    width: 72%;
+    height: 100%;
+    justify-content: center;
+  }
+
+
+
+.study {
+    position: absolute;
+    border-right: 2px solid black; 
+    width: 40%;
+    height: 70%;
+    left: 30%;
+    bottom : 20%;
+}
+.study1 {
+    position: absolute;
+    border-bottom: 2px solid black; 
+    width: 100%;
+    height: 33%;
+}
+.study1-position {
+    position: absolute;
+    width: 21%;
+    left: 15%;
+    bottom : 0%;
+    transform: translate( -50%, -10%);
+    cursor : pointer;
+}
+.study2 {
+    position: absolute;
+    border-bottom: 2px solid black; 
+    width: 100%;
+    height: 34%;
+    top : 33%;
+}
+.study3 {
+    position: absolute;
+    width: 100%;
+    height: 33%;
+    top : 66%;
+}
+
+
+.make {
+    position: absolute;
+    width: 30%;
+    height: 70%;
+    left: 70%;
+    bottom : 20%;
+}
+
+
+.make-position {
+    position: absolute;
+    width: 28%;
+    left: 50%;
+    bottom : 0%;
+    transform: translate( -50%, -10%);
+    cursor : pointer;
+}
