@@ -3,42 +3,51 @@
         "id": 1,
         "name": "Vaccine",
         "description": "Vaccine for Virus",
-        "major": "bs",
+        "src": "images/vaccine.png",
+        "requirement": "bs",
         "stack": 8,
-        "requirement": [
-            {
-                "material": "antibody",
-                "amount": 2
-            },
-            {
-                "material": "pipette",
-                "amount": 10
-            },
-            {
-                "material": "petri dish",
-                "amount": 5
-            }
+        "materials": [
+            "antibody",
+            "pipette",
+            "petridish"
         ]
     },
     {
         "id": 2,
         "name": "Car",
         "description": "Vehicle. Very Strong",
-        "major": "mse",
+        "requirement": "mse",
+        "src": "images/car.png",
         "stack": 8,
-        "requirement": [
-            {
-                "material": "antibody",
-                "amount": 2
-            },
-            {
-                "material": "pipette",
-                "amount": 10
-            },
-            {
-                "material": "petri dish",
-                "amount": 5
-            }
+        "materials": [
+            "steel",
+            "tire",
+            "oil"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Computer Virus",
+        "description": "Deadly. Robust. Infectious.",
+        "requirement": "cs",
+        "src": "images/virus.png",
+        "stack": 11,
+        "materials": [
+            "coffee",
+            "macbook"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Airplane",
+        "description": "We go up",
+        "requirement": "ae",
+        "src": "images/airplane.png",
+        "stack": 8,
+        "materials": [
+            "steel",
+            "glass",
+            "oil"
         ]
     }
 ]

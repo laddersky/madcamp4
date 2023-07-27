@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Harry Potter",
-        "image": "./images/harry.jpg",
+        "image": "./play1.png",
         "state": "healthy",
         "food": 10,
         "water": 10,
@@ -10,9 +10,10 @@
         "dwater": 0,
         "usemed": false,
         "study": "none",
+        "chore":"rest",
         "major": {
             "bs": 0,
-            "cs": 0,
+            "cs": 11,
             "cee": 0,
             "mse": 0
         }
@@ -20,7 +21,7 @@
     {
         "id": 2,
         "name": "Ron Weasley",
-        "image": "./images/ron.jpg",
+        "image": "./play2.png",
         "state": "healthy",
         "food": 10,
         "water": 10,
@@ -28,6 +29,7 @@
         "dwater": 0,
         "usemed": false,
         "study": "none",
+        "chore":"rest",
         "major": {
             "bs": 0,
             "cs": 0,
@@ -38,7 +40,7 @@
     {
         "id": 3,
         "name": "Hermione Granger",
-        "image": "./images/hermione.jpg",
+        "image": "./play3.png",
         "state": "sick",
         "food": 10,
         "water": 10,
@@ -46,6 +48,7 @@
         "dwater": 0,
         "usemed": false,
         "study": "none",
+        "chore":"rest",
         "major": {
             "bs": 0,
             "cs": 0,
@@ -56,7 +59,7 @@
     {
         "id": 4,
         "name": "James Potter",
-        "image": "./images/james.jpg",
+        "image": "./play4.png",
         "state": "dead",
         "food": 10,
         "water": 10,
@@ -64,6 +67,7 @@
         "dwater": 0,
         "usemed": false,
         "study": "none",
+        "chore":"rest",
         "major": {
             "bs": 0,
             "cs": 0,

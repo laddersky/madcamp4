@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { MapProvider, useMapContext } from './MapContext';
 import { MakeProvider, useMakeContext } from './MakeContext';
+import { useGameState } from './GameStateContext';
+import MakeGoal from './MakeGoal.jsx';
 import './detail_page.css';
 import { Howl, Howler } from 'howler';
 import Map from './Map';
@@ -9,10 +11,13 @@ import Make from './Make';
 function ManageChores() {
   // useState 훅을 사용하여 count 상태와 setCount 함수를 정의합니다.
   // count는 현재의 상태 값이며, setCount는 상태 값을 업데이트하는 함수입니다.
+  const { gameState, setGameState } = useGameState();
   const [islocation, setislocation] = useState([0,0,0,0,0]);
   // 0 explore
   
-    const [isresting, setisresting] = useState([true,true,true,true]);
+    const [isresting, setisresting] = useState(
+      [gameState.characters[0].state !== "dead",gameState.characters[1].state !== "dead",
+      gameState.characters[2].state !== "dead",gameState.characters[3].state !== "dead"]);
   // 0 이 player 1
     const [iswho, setiswho] = useState([0,0,0]);
     const [isvaild, setisvaild] = useState(true);
@@ -53,27 +58,69 @@ function ManageChores() {
           if ( islocation[iswho[2]] != 0){   // 도착지에 누군가가 있을 때
             newisresting[islocation[iswho[2]]-1] = true;
             setisresting(newisresting);
+            gameState.characters[islocation[iswho[2]]].chore = "rest" 
           } 
           newislocation[iswho[2]] =  iswho[1];
           setislocation(newislocation);
+          if (iswho[2] == 0){
+            gameState.characters[iswho[1]].chore = "explore" 
+          }
+          else if (iswho[2] == 4){
+            gameState.characters[iswho[1]].chore = "make" 
+          }else {
+            gameState.characters[iswho[1]].chore = "study" 
+          }
           newisresting[iswho[1]-1] = false;
           setisresting(newisresting);
         }
         else if (iswho[2] == 5){           //도착지가 rest일 때
           newislocation[iswho[0]] =  0;
           setislocation(newislocation);
+          gameState.characters[iswho[1]].chore = "rest" 
           newisresting[iswho[1]-1] = true;
           setisresting(newisresting);
         }else {                              //출발지와 도착지가 rest가 아닐 때
           if ( islocation[iswho[2]] != 0){   //도착지에 누군가가 있을 때
             newisresting[islocation[iswho[2]]-1] = true;
             setisresting(newisresting);
+            gameState.characters[islocation[iswho[2]]].chore = "rest" 
           } 
+
+          if (iswho[2] == 0){
+            gameState.characters[iswho[1]].chore = "explore" 
+          }
+          else if (iswho[2] == 4){
+            gameState.characters[iswho[1]].chore = "make" 
+          }else {
+            gameState.characters[iswho[1]].chore = "study" 
+          }
           newislocation[iswho[0]] =  0;
           newislocation[iswho[2]] =  iswho[1];
           setislocation(newislocation);
         }
       }
+      let i = 0;
+      if (islocation[0] != 0){
+        gameState.action.explore = 1 ;
+      }else {
+        gameState.action.explore = 0 ;
+      }
+      if (islocation[1] != 0){
+        i++;
+      }
+      if (islocation[2] != 0){
+        i++;
+      }
+      if (islocation[3] != 0){
+        i++;
+      }
+      gameState.action.study = i;
+      if (islocation[4] != 0){
+        gameState.action.make = 1 ;
+      }else {
+        gameState.action.make = 0 ;
+      }
+
     };
     const handleenter = (to) =>{
       const newiswho = [...iswho]; // 배열의 복사본을 만듭니다.
@@ -146,6 +193,43 @@ function ManageChores() {
       }));
     };
 
+    
+    const actions = ["explore", "study", "rest", "make"];
+    const majors = ["bs", "cs", "cee", "mse"];
+
+    const studies = (idx) => {
+
+      return (
+        <div className='study-content' style={{flexWrap: 'nowrap' }}>
+                { islocation[idx] != 0 &&
+                  majors.map((major, mindex) => (
+                      <button
+                          className={
+                              gameState.characters[islocation[idx]].study === major ?
+                              "small green" : "small lightgreen"
+                          }
+                          
+                          key={mindex}
+                          onClick={() => {
+                              setGameState((prevState) => ({
+                                  ...prevState,
+                                  characters: prevState.characters.map((character, index) =>
+                                      index === islocation[idx] ?
+                                      { ...character, study: character.study === "none" ?
+                                          majors[mindex] : "none"}
+                                      : character
+                                  )
+                              }));
+                          }}
+                      >
+                          {major}
+                      </button>
+                  ))
+              }
+              </div>
+      )
+    }
+
     return (
         <div className = 'activity-container'>
             {mapstate.visible && (
@@ -155,7 +239,7 @@ function ManageChores() {
             )}
             {makestate.visible && (
                 <div className='map-contain' > 
-                    <Make/>
+                    <MakeGoal/>
                 </div>
             )}
         <div className='rest' style={{backgroundColor : 'white'}} 
@@ -208,7 +292,9 @@ function ManageChores() {
             onDragStart={() => handleDragStart(1,5)} 
             onDragEnd={handleDragEnd}>
               {activeImage(islocation[1])}  
-            </div>
+            </div >
+              {studies(1)}
+            
           </div>
           <div className='study2' onDragEnter={() => handleenter(2)}>
             <div className="study1-position" draggable = 'true'
@@ -216,6 +302,7 @@ function ManageChores() {
             onDragEnd={handleDragEnd}>
                 {activeImage(islocation[2])}  
             </div>
+            {studies(2)}
           </div>
           <div className='study3' onDragEnter={() => handleenter(3)}>
             <div className="study1-position" draggable = 'true'
@@ -223,8 +310,9 @@ function ManageChores() {
             onDragEnd={handleDragEnd}>
                 {activeImage(islocation[3])}  
             </div>
+            {studies(3)}
           </div>
-
+              
         </div>
         <div className='make'  onDragEnter={() => handleenter(4)}>
           <div className="explore-position" draggable = 'true'

@@ -9,13 +9,21 @@ export function useGameState() {
 
 export function GameStateProvider({ children }) {
   const [gameState, setGameState] = useState({
+    "game": "playing",
     "characters": characters,
-    "action": "none",
+    "action": {
+      "explore":0,
+      "make" : 0,
+      "study": 0,
+      "rest": 4,
+    },
     "water": 10,
     "food": 10,
     "medkit": 1,
+    "goal": null,
     "totaldfood": 0,
     "totaldwater": 0,
+    "inventory" : ["antibody", "coffee", "macbook"],
     "day": 1,
     "news": "Welcome to the game!",
     "eventIndex": 0,
@@ -25,7 +33,7 @@ export function GameStateProvider({ children }) {
     "major": {
       "bs": 4,
       "cs": 1,
-      "cee": 2,
+      "ae": 2,
       "mse": 2,
     }
   });

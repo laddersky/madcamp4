@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGameState } from './GameStateContext';
 import events from './EventList.json';
+import characters from './character.json';
+import initialGameState from './initialGame.js';
+import goals from './goal.json';
 
 
 function NextDayButton () {
@@ -96,10 +99,6 @@ function NextDayButton () {
     };
 
     const isValid = () => {
-        if(gameState.action === "none"){
-            window.alert("Please choose an action before saving the state.");
-            return false;
-        }
         if(gameState.eventIndex === 2 && gameState.option.name === "Yes"){
             console.log(gameState.totaldwater, gameState.water, gameState.trade.uget);
             if(gameState.trade.ures === "water" && gameState.water < gameState.trade.uget
@@ -121,17 +120,28 @@ function NextDayButton () {
     };
 
     const study = () => {
-        var news = "";
+        let news = "";
+
+        for(var i = 0; i < gameState.characters.length; i++) {
+            if(gameState.characters[i].state === "dead")
+                continue;
+            if(gameState.characters[i].study === "none")
+                continue;
+            else{
+                news += gameState.characters[i].name + " studied " + gameState.characters[i].study + ". ";
+            }
+        }
+
+
+
         setGameState((prevState) => ({
             ...prevState,
             characters: prevState.characters.map((character, idx) => {
 
-                console.log(character.name, character.study);
-
                 if(character.state === "dead")
                     return character;
                 if(character.study === "bs"){
-                    news += character.name + " studied " + character.study + ". ";
+                    
                     return {
                         ...character,
                         major: {
@@ -141,7 +151,6 @@ function NextDayButton () {
                     }
                 }  
                 if(character.study === "cs"){
-                    news += character.name + " studied " + character.study + ". ";
                     return {
                         ...character,
                         major: {
@@ -150,18 +159,16 @@ function NextDayButton () {
                         }
                     }
                 }
-                if(character.study === "cee"){
-                    news += character.name + " studied " + character.study + ". ";
+                if(character.study === "ae"){
                     return {
                         ...character,
                         major: {
                             ...character.major,
-                            cee: character.major.cee + 1,
+                            ae: character.major.ae + 1,
                         }
                     }
                 }
                 if(character.study === "mse"){
-                    news += character.name + " studied " + character.study + ". ";
                     return {
                         ...character,
                         major: {
@@ -172,16 +179,31 @@ function NextDayButton () {
                 }
                 return character;
             }),
-            news: "You studied." + news,
         }));
+
+        console.log(news);
+
+
+        return "You studied." + news;
     };
 
+    const canMake = () => {
 
+        if(gameState.characters[0].major[gameState.goal.requirement] < gameState.goal.stack)
+            return false;
+        for(var i = 0; i < gameState.goal.materials.length; i++){
+            if(!gameState.inventory.includes(gameState.goal.materials[i]))
+                return false;
+        }
+        return true;
+    }
 
     const nextDay = () => {
 
         var newWater = 0;
         var newFood = 0;
+        let news = "";
+        let game = "playing";
 
         var usedWaters = [0, 0, 0, 0];
         var usedFoods = [0, 0, 0, 0];
@@ -191,7 +213,7 @@ function NextDayButton () {
 
         
 
-        if(gameState.action === "explore"){
+        if(gameState.action.explore !== 0){
 
             if(gameState.characters[0].water !== 0 && gameState.characters[1].water !== 0 && gameState.characters[2].water !== 0 && gameState.characters[3].water !== 0){
                 newWater = Math.floor(Math.random() * 5);
@@ -201,38 +223,51 @@ function NextDayButton () {
                 usedFoods = [1, 1, 1, 1];
 
                 if(newWater === 0 && newFood === 0){
-                    gameState.news = "OOPS! You got nuthin' from exploring. Try again tomorrow."
+                    news = "OOPS! You got nuthin' from exploring. Try again tomorrow."
                 }
                 else{
-                    gameState.news = "You got " + newWater + " water and " + newFood + " food from exploring."
+                    news = "You got " + newWater + " water and " + newFood + " food from exploring."
                 }
             }
             else{
-                gameState.news = "You are DEHYDRATED. You got nuthin' from exploring."
+                news = "You are DEHYDRATED. You got nuthin' from exploring."
             }
 
         }
 
-        if(gameState.action === "study"){
+        if(gameState.action.study !== 0){
 
-            study();
+            news += study();
         }
 
-        if(gameState.action === "rest"){
-            gameState.news = "You rested."
+        if(gameState.action.rest !== "rest"){
         }
 
-        if(gameState.action === "make"){
-            gameState.news = "You got nothing to make."
+        if(gameState.action.make !== 0){
+            if(gameState.goal !== null){
+                if(canMake()){
+                    news = "You made " + gameState.goal.name + ".";
+                    game = "victory";
+                }else{
+                    news = "You don't have enough materials to make " + gameState.goal.name + ".";
+                }
+            }
+            else
+            {news = "You got nothing to make."}
         }
 
 
         setGameState((prevState) => ({
             ...prevState,
-            action: "none",
+            action: {
+                "explore":0,
+                "make" : 0,
+                "study": 0,
+                "rest": 4,
+            },
             characters: prevState.characters.map((character, idx) => {
-                const usedWater = usedWaters[idx] + Math.floor(Math.random() * 2);
-                const usedFood = usedFoods[idx] + Math.floor(Math.random() * 2);
+                const usedWater = usedWaters[idx] + Math.floor(Math.random() * 3) + (character.state === "sick" ? 1 : 0);
+                const usedFood = usedFoods[idx] + Math.floor(Math.random() * 3) + (character.state === "sick" ? 1 : 0);
                 const dWater = prevState.characters[idx].dwater;
                 const dFood = prevState.characters[idx].dfood;
                 const water = relu(character.water + dWater - usedWater);
@@ -246,6 +281,20 @@ function NextDayButton () {
                         state: "dead"
                     }
 
+                }
+
+                if(character.state === "healthy" && water < 4 && food < 4){
+                    if(Math.random() < 0.3){
+                        return {
+                            ...character,
+                            state: "sick",
+                            water: water,
+                            food: food,
+                            dwater: 0,
+                            dfood: 0,
+                            study: "none",
+                        }
+                    }
                 }
 
                 if(character.state === "sick"){
@@ -281,7 +330,15 @@ function NextDayButton () {
                         }
                     }
 
-                    else return character;
+                    else return {
+                        ...character,
+                        state: "sick",
+                        water: water,
+                        food: food,
+                        dwater: 0,
+                        dfood: 0,
+                        study: "none",
+                    };
                 }
             
                 return {
@@ -299,31 +356,45 @@ function NextDayButton () {
             totaldwater: 0,
             totaldfood: 0,
             option: "none",
-          }));
-          setEvent(Math.floor(Math.random() * events.length));
-      };
+            news: news,
+            goal: null,
+            game: game,
+        }));
+        setEvent(Math.floor(Math.random() * events.length));
+        
+    };
+
+    useEffect(() => {
+        const allCharactersDead = gameState.characters.every(
+        (character) => character.state === "dead"
+        );
+    
+        if (allCharactersDead) {
+            setGameState((prevState) => ({
+                ...prevState,
+                news: "GAME OVER! All characters are dead.",
+            }));
+            window.alert("GAME OVER! All characters are dead.");
+        }
+    }, [gameState.characters]);
+
+    useEffect(() => {
+        if(gameState.game === "victory"){
+            setGameState((prevState) => ({
+                ...prevState,
+                news: "You won the game!",
+                }));
+            window.alert("You won the game!");
+        }
+    }, [gameState.game]);
+
       
 
     const restart = () => {
-        setGameState((prevState) => ({
-            characters: prevState.characters.map((character) => ({
-                ...character,
-                water: 10,
-                food: 10,
-                dwater: 0,
-                dfood: 0,
-              })),
-              action: "none",
-              water: 10,
-              food: 10,
-              totaldfood: 0,
-              totaldwater: 0,
-              day: 1,
-              news: "Welcome to the game!",
-              eventIndex: 0,
-              option: "none",
-              trade: null,
-        }));
+        setGameState({
+            ...initialGameState,
+            characters: characters,
+        });
     };
     
     return (

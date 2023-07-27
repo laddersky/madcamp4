@@ -27,7 +27,7 @@
     top: 48%;
     border-radius: 5%;
     transform: translate( -50%, -50% );
-    overflow: hidden; 
+    overflow: scroll; 
     
 }
 
@@ -147,6 +147,15 @@
     transform: translate( -50%, -10%);
     cursor : pointer;
 }
+.study-content{
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    width: 65%;
+    height: 80%;
+}
+
+
 .study2 {
     position: absolute;
     border-bottom: 2px solid black; 
