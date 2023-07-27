@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+.tabs {
+  width: 800px;
+  height: 400px;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+:root {
+  background-color: black;
+}

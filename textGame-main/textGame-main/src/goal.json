@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Vaccine",
+        "description": "Vaccine for Virus",
+        "major": "bs",
+        "stack": 8,
+        "requirement": [
+            {
+                "material": "antibody",
+                "amount": 2
+            },
+            {
+                "material": "pipette",
+                "amount": 10
+            },
+            {
+                "material": "petri dish",
+                "amount": 5
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Car",
+        "description": "Vehicle. Very Strong",
+        "major": "mse",
+        "stack": 8,
+        "requirement": [
+            {
+                "material": "antibody",
+                "amount": 2
+            },
+            {
+                "material": "pipette",
+                "amount": 10
+            },
+            {
+                "material": "petri dish",
+                "amount": 5
+            }
+        ]
+    }
+]

@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "name": "Harry Potter",
+        "image": "./images/harry.jpg",
+        "state": "healthy",
+        "food": 10,
+        "water": 10,
+        "dfood": 0,
+        "dwater": 0,
+        "usemed": false,
+        "study": "none",
+        "major": {
+            "bs": 0,
+            "cs": 11,
+            "cee": 0,
+            "mse": 0
+        }
+    },
+    {
+        "id": 2,
+        "name": "Ron Weasley",
+        "image": "./images/ron.jpg",
+        "state": "healthy",
+        "food": 10,
+        "water": 10,
+        "dfood": 0,
+        "dwater": 0,
+        "usemed": false,
+        "study": "none",
+        "major": {
+            "bs": 0,
+            "cs": 0,
+            "cee": 0,
+            "mse": 0
+        }
+    },
+    {
+        "id": 3,
+        "name": "Hermione Granger",
+        "image": "./images/hermione.jpg",
+        "state": "sick",
+        "food": 10,
+        "water": 10,
+        "dfood": 0,
+        "dwater": 0,
+        "usemed": false,
+        "study": "none",
+        "major": {
+            "bs": 0,
+            "cs": 0,
+            "cee": 0,
+            "mse": 0
+        }
+    },
+    {
+        "id": 4,
+        "name": "James Potter",
+        "image": "./images/james.jpg",
+        "state": "dead",
+        "food": 10,
+        "water": 10,
+        "dfood": 0,
+        "dwater": 0,
+        "usemed": false,
+        "study": "none",
+        "major": {
+            "bs": 0,
+            "cs": 0,
+            "cee": 0,
+            "mse": 0
+        }
+    }
+]

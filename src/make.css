@@ -1,0 +1,231 @@
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 투명도가 있는 검은 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.contain-content {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    border-radius: 10px;
+    background-color: white;
+}
+.inventory{
+    position: absolute;
+    width: 45%;
+    height: 100%;
+    padding: 1%;
+}
+
+.goal{
+    position: absolute;
+    left: 45%;
+    width: 55%;
+    height: 40%;
+    padding: 1%;
+}
+
+.require{
+    position: absolute;
+    left: 45%;
+    top: 40%;
+    width: 55%;
+    height: 40%;
+    background-color: green;
+}
+
+.antibody{
+    padding: 0%;
+    position: absolute;
+    border: 2px solid black;
+    width: 30%;
+    height: 30%;
+    justify-content: center;
+}
+.antibody img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+.pipette{
+    position: absolute;
+    border: 2px solid black;
+    width: 30%;
+    left: 34%;
+    height: 30%;   
+}
+.pipette img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.petridish{
+    position: absolute;
+    border: 2px solid black;
+    width: 30%;
+    left: 66%;
+    height: 30%;
+    
+}
+.petridish img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.steel{
+    position: absolute;
+    border: 2px solid black;
+    width: 30%;
+    top: 35%;
+    height: 30%;
+}
+.steel img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+
+.tire{
+    position: absolute;
+    border: 2px solid black;
+    width: 30%;
+    top: 35%;
+    left: 34%;
+    height: 30%;
+}
+.tire img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+
+
+.oil{
+    position: absolute;
+    border: 2px solid black;
+    width: 30%;
+    top: 35%;
+    left: 66%;
+    height: 30%;
+}
+.oil img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+
+.coffee{
+    position: absolute;
+    border: 2px solid black;
+    width: 30%;
+    top: 68%;
+    height: 30%;
+    
+}
+.coffee img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.macbook{
+    position: absolute;
+    border: 2px solid black;
+    width: 30%;
+    top: 68%;
+    left: 34%;
+    height: 30%;
+}
+.macbook img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.glass{
+    position: absolute;
+    border: 2px solid black;
+    width: 30%;
+    top: 68%;
+    left: 66%;
+    height: 30%;
+    
+}
+.glass img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.Vaccine{
+    position: absolute;
+    border: 2px solid black;
+    width: 23%;
+    height: 80%;
+}
+.Car{
+    position: absolute;
+    border: 2px solid black;
+    left:  26%;
+    width: 23%;
+    height: 80%;
+}
+.Computer-Virus{
+    position: absolute;
+    border: 2px solid black;
+    left:  51%;
+    width: 23%;
+    height: 80%;
+}
+.Airplane{
+    position: absolute;
+    border: 2px solid black;
+    left:  75%;
+    width: 23%;
+    height: 80%;
+}
+
+.target{
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    border: 2px solid black;
+}
+.description{
+    position: absolute;
+    width: 40%;
+    top: 40%;
+    height: 60%;
+    border: 2px solid black;
+}
+.major{
+    position: absolute;
+    width: 40%;
+    top: 40%;
+    height: 60%;
+    border: 2px solid black;
+}
+.require-content{
+    position: absolute;
+    width: 40%;
+    top: 40%;
+    height: 60%;
+    border: 2px solid black;
+}
+.close{
+
+}

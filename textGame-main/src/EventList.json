@@ -1,0 +1,70 @@
+[
+    {
+      "evid": 0,
+      "name": "Peaceful day",
+      "description": "Nothing Happened Today!",
+      "options": [
+        {
+          "name": "Nice",
+          "description": "Good for me",
+          "effect": {
+            "type": "none"
+          }
+        },
+        {
+          "name": "Meh",
+          "description": "Booooring",
+          "effect": {
+            "type": "none"
+          }
+        }
+      ]
+    },
+    {
+      "evid": 1,
+      "name": "Breach in",
+      "description": "Infected have breached the walls",
+      "options": [
+        {
+          "name": "Run",
+          "description": "Run away",
+          "effect": {
+            "type": "resource",
+            "resource": "all",
+            "amount": 5
+          }
+        },
+        {
+          "name": "Fight",
+          "description": "Fight back",
+          "effect": {
+            "type": "health random-gameover",
+            "resource": "all",
+            "amount": 5
+          }
+        }
+      ]
+    },
+    {
+      "evid": 2,
+      "name": "Traders",
+      "description": "Bunch of traders have arrived. Would you like to trade?",
+      "options": [
+        {
+          "name": "Yes",
+          "description": "Trade with them",
+          "effect": {
+            "type": "trade"
+          }
+        },
+        {
+          "name": "No",
+          "description": "Ignore them",
+          "effect": {
+            "type": "none"
+          }
+        }
+      ]
+    }
+  ]
+  
